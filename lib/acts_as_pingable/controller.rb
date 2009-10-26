@@ -32,7 +32,7 @@ module ActsAsPingable
           benchmark_result = Benchmark.measure do
             Ping.pinged(request.remote_ip, params[:source])
           end
-          ping_response benchmark_result.real
+          ping_response(benchmark_result.real * 1000)
         rescue => exception
           render :text => exception.message , :status => 500
         end
